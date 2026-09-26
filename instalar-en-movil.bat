@@ -7,7 +7,7 @@ cd /d "%~dp0"
 "%ADB%" start-server >nul
 "%ADB%" wait-for-device
 echo Movil detectado. Instalando AutoSkip...
-"%ADB%" install -r AutoSkip-1.0.apk || goto :error
+"%ADB%" install -r AutoSkip-1.1.apk || goto :error
 
 echo Activando el servicio de Accesibilidad...
 "%ADB%" push scripts\enable-service.sh /data/local/tmp/autoskip-enable.sh >nul || goto :error

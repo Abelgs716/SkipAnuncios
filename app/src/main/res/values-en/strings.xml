@@ -15,6 +15,9 @@
     <string name="skipped_count">Ads skipped: %1$d</string>
     <string name="privacy_note">AutoSkip has no internet access. It doesn\'t collect, store or send any data: it only looks for the “Skip ad” button inside YouTube.</string>
 
+    <string name="button_support">☕ Support the project</string>
+    <string name="support_note">AutoSkip is free and open source. If it saves you time, you can buy me a coffee.</string>
+
     <string name="permission_title">Permission required</string>
     <string name="permission_intro">AutoSkip needs the Accessibility permission to detect the “Skip ad” button while you watch videos on YouTube and tap it for you.</string>
     <string name="permission_does_title">✅ What it does</string>

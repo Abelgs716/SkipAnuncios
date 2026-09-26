@@ -1,6 +1,8 @@
 package com.autoskip.app
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
         grantButton.setOnClickListener { openPermissionScreen() }
         findViewById<Button>(R.id.button_permissions_info).setOnClickListener { openPermissionScreen() }
+        findViewById<Button>(R.id.button_support).setOnClickListener { openSupportPage() }
     }
 
     override fun onResume() {
@@ -64,6 +67,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun openPermissionScreen() {
         startActivity(Intent(this, PermissionActivity::class.java))
+    }
+
+    /** Opens the donation page in the browser; AutoSkip itself has no internet access. */
+    private fun openSupportPage() {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.support_url))))
+        } catch (e: ActivityNotFoundException) {
+            // No browser installed: nothing to open.
+        }
     }
 
     private fun updateStatus() {

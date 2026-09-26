@@ -2,9 +2,13 @@
 
 Pulsa automáticamente el botón **«Saltar anuncio» / «Skip ad»** en la app de YouTube mediante un `AccessibilityService`.
 
+[![Descargar APK](https://img.shields.io/github/v/release/Abelgs716/SkipAnuncios?label=Descargar%20APK)](https://github.com/Abelgs716/SkipAnuncios/releases/latest)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Apoya%20el%20proyecto-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/abelgs716)
+[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-blue)](LICENSE)
+
 ## Descargar e instalar en el móvil
 
-1. Descarga `AutoSkip-1.0.apk` desde [Releases](https://github.com/Abelgs716/SkipAnuncios/releases/latest) en el propio móvil.
+1. Descarga `AutoSkip-1.1.apk` desde [Releases](https://github.com/Abelgs716/SkipAnuncios/releases/latest) en el propio móvil.
 2. Ábrelo y permite *Instalar apps desconocidas* para el navegador o el gestor de archivos cuando Android lo pida.
 3. Abre AutoSkip y sigue la pantalla de permisos: *Ajustes → Accesibilidad → AutoSkip → Activar*.
    - Si aparece **«Ajuste restringido»** (Android 13 o superior): *Ajustes → Apps → AutoSkip → ⋮ → Permitir ajustes restringidos* y vuelve a intentarlo.
@@ -14,7 +18,7 @@ Requisitos: Android 8.0 o superior y la app oficial de YouTube.
 
 ### Instalar desde un PC por USB
 
-Con la depuración USB activada en el móvil y [platform-tools](https://developer.android.com/tools/releases/platform-tools) instalado en `%USERPROFILE%\AndroidDev\sdk`, ejecuta `instalar-en-movil.bat`. Instala `AutoSkip-1.0.apk` y activa el servicio de Accesibilidad sin pasar por Ajustes.
+Con la depuración USB activada en el móvil y [platform-tools](https://developer.android.com/tools/releases/platform-tools) instalado en `%USERPROFILE%\AndroidDev\sdk`, ejecuta `instalar-en-movil.bat`. Instala `AutoSkip-1.1.apk` y activa el servicio de Accesibilidad sin pasar por Ajustes.
 
 ## Compilar
 
@@ -81,6 +85,12 @@ La política de Google Play prohíbe las apps que bloquean o interfieren con los
 ## ¿Y iPhone?
 
 No es posible en iOS. Apple no ofrece ninguna API equivalente a `AccessibilityService`: cada app vive aislada en su sandbox y no puede leer ni pulsar la interfaz de otra. Tampoco Atajos, Control por voz o Control por botón pueden automatizar esto desde una app de terceros, y App Store no aceptaría una app así. La única forma oficial de ver YouTube sin anuncios en iPhone es YouTube Premium.
+
+## ☕ Apoya el proyecto
+
+AutoSkip es gratuito, sin anuncios y de código abierto. Si te ahorra tiempo, puedes invitarme a un café en **[Ko-fi](https://ko-fi.com/abelgs716)**. Las donaciones ayudan a mantenerlo al día cada vez que YouTube cambia su interfaz.
+
+También ayuda mucho darle una ⭐ al repositorio y compartirlo.
 
 ## Licencia
 
