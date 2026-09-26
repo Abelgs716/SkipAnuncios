@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solo recibe eventos de la app de YouTube (packageNames). -->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/accessibility_service_description"
+    android:packageNames="com.google.android.youtube"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagReportViewIds|flagRetrieveInteractiveWindows"
+    android:canRetrieveWindowContent="true"
+    android:canPerformGestures="true"
+    android:notificationTimeout="100"
+    android:settingsActivity="com.autoskip.app.MainActivity" />

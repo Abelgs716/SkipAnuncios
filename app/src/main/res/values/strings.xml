@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoSkip</string>
+    <string name="app_tagline">Salta automáticamente los anuncios de YouTube.</string>
+
+    <!-- Estado -->
+    <string name="status_active">Activo</string>
+    <string name="status_active_detail">AutoSkip pulsará «Saltar anuncio» en cuanto aparezca en YouTube.</string>
+    <string name="status_disabled">Desactivado</string>
+    <string name="status_disabled_detail">El servicio está instalado, pero has pausado AutoSkip.</string>
+    <string name="status_permission_needed">Permiso de accesibilidad necesario</string>
+    <string name="status_permission_needed_detail">Activa AutoSkip en los ajustes de Accesibilidad para que pueda funcionar.</string>
+
+    <string name="switch_label">Activar / Desactivar AutoSkip</string>
+    <string name="button_grant_permission">Conceder permiso</string>
+    <string name="button_permissions_info">Ver qué permisos usa AutoSkip</string>
+    <string name="skipped_count">Anuncios saltados: %1$d</string>
+    <string name="privacy_note">AutoSkip no tiene acceso a internet. No recopila, guarda ni envía ningún dato: solo busca el botón «Saltar anuncio» dentro de YouTube.</string>
+
+    <!-- Pantalla de permisos -->
+    <string name="permission_title">Permiso necesario</string>
+    <string name="permission_intro">AutoSkip necesita el permiso de Accesibilidad para detectar el botón «Saltar anuncio» mientras ves vídeos en YouTube y pulsarlo por ti.</string>
+    <string name="permission_does_title">✅ Qué hace</string>
+    <string name="permission_does">• Solo lee la pantalla cuando YouTube está abierto.\n• Busca únicamente el botón «Saltar anuncio» / «Skip ad» (en cualquier idioma).\n• Cuando el botón es visible y pulsable, lo pulsa una vez.</string>
+    <string name="permission_does_not_title">🚫 Qué no hace</string>
+    <string name="permission_does_not">• No pulsa ningún otro botón: ni vídeos, comentarios, «Me gusta», suscripciones ni búsquedas.\n• No lee otras apps, mensajes ni contraseñas.\n• No tiene acceso a internet y no envía ni guarda datos.</string>
+    <string name="permission_steps_title">Cómo activarlo</string>
+    <string name="permission_steps">1. Pulsa «Abrir ajustes de Accesibilidad».\n2. Entra en «Apps instaladas» o «Servicios descargados».\n3. Elige «AutoSkip» y actívalo.\n4. Confirma el aviso del sistema.</string>
+    <string name="permission_granted">✅ Permiso concedido. AutoSkip ya puede funcionar.</string>
+    <string name="permission_restricted_note">¿Aparece «Ajuste restringido» y no te deja activarlo? Pasa en Android 13 o superior cuando la app no viene de Play Store. Abre la información de la app, pulsa ⋮ (arriba a la derecha) → «Permitir ajustes restringidos» y vuelve a intentarlo.</string>
+    <string name="button_open_accessibility">Abrir ajustes de Accesibilidad</string>
+    <string name="button_app_info">Abrir información de la app</string>
+    <string name="button_continue">Continuar</string>
+
+    <!-- Servicio de accesibilidad (se muestra en Ajustes del sistema) -->
+    <string name="accessibility_service_label">AutoSkip</string>
+    <string name="accessibility_service_description">AutoSkip detecta el botón «Saltar anuncio» en la app de YouTube y lo pulsa automáticamente. Solo lee la pantalla de YouTube, no pulsa ningún otro elemento y no recopila ni envía datos.</string>
+</resources>
