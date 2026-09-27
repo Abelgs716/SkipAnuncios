@@ -1,97 +1,97 @@
 # AutoSkip (Android)
 
-Pulsa automáticamente el botón **«Saltar anuncio» / «Skip ad»** en la app de YouTube mediante un `AccessibilityService`.
+Automatically taps the **"Skip ad" / "Saltar anuncio"** button in the YouTube app using an `AccessibilityService`.
 
-[![Descargar APK](https://img.shields.io/github/v/release/Abelgs716/SkipAnuncios?label=Descargar%20APK)](https://github.com/Abelgs716/SkipAnuncios/releases/latest)
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-Apoya%20el%20proyecto-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/abelgs716)
-[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-blue)](LICENSE)
+[![Download APK](https://img.shields.io/github/v/release/Abelgs716/autoskip?label=Download%20APK)](https://github.com/Abelgs716/autoskip/releases/latest)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20the%20project-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/abelgs716)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-## Descargar e instalar en el móvil
+## Download and install on your phone
 
-1. Descarga `AutoSkip-1.1.apk` desde [Releases](https://github.com/Abelgs716/SkipAnuncios/releases/latest) en el propio móvil.
-2. Ábrelo y permite *Instalar apps desconocidas* para el navegador o el gestor de archivos cuando Android lo pida.
-3. Abre AutoSkip y sigue la pantalla de permisos: *Ajustes → Accesibilidad → AutoSkip → Activar*.
-   - Si aparece **«Ajuste restringido»** (Android 13 o superior): *Ajustes → Apps → AutoSkip → ⋮ → Permitir ajustes restringidos* y vuelve a intentarlo.
-4. El estado debe mostrar 🟢 **Activo**. Abre YouTube y AutoSkip pulsará «Saltar anuncio» en cuanto aparezca.
+1. Download `AutoSkip-1.1.apk` from [Releases](https://github.com/Abelgs716/autoskip/releases/latest) on your phone.
+2. Open it and allow *Install unknown apps* for your browser or file manager when Android asks.
+3. Open AutoSkip and follow the permissions screen: *Settings → Accessibility → AutoSkip → Enable*.
+   - If you see **"Restricted setting"** (Android 13+): *Settings → Apps → AutoSkip → ⋮ → Allow restricted settings* and try again.
+4. The status should show 🟢 **Active**. Open YouTube and AutoSkip will tap "Skip ad" as soon as it appears.
 
-Requisitos: Android 8.0 o superior y la app oficial de YouTube.
+Requirements: Android 8.0+ and the official YouTube app.
 
-### Instalar desde un PC por USB
+### Install from PC via USB
 
-Con la depuración USB activada en el móvil y [platform-tools](https://developer.android.com/tools/releases/platform-tools) instalado en `%USERPROFILE%\AndroidDev\sdk`, ejecuta `instalar-en-movil.bat`. Instala `AutoSkip-1.1.apk` y activa el servicio de Accesibilidad sin pasar por Ajustes.
+With USB debugging enabled on your phone and [platform-tools](https://developer.android.com/tools/releases/platform-tools) installed in `%USERPROFILE%\AndroidDev\sdk`, run `instalar-en-movil.bat`. It installs `AutoSkip-1.1.apk` and enables the Accessibility service without going through Settings.
 
-## Compilar
+## Build
 
-Necesitas JDK 17 y el SDK de Android (o [Android Studio](https://developer.android.com/studio), que incluye ambos). Abre la carpeta con *File → Open* o usa la terminal:
-
-```
-gradlew test            # tests unitarios de la detección de texto
-gradlew assembleDebug   # APK de pruebas
-gradlew assembleRelease # APK firmado (necesita keystore.properties)
-```
-
-Para firmar la versión de publicación, crea `keystore.properties` en la raíz (está en `.gitignore`, nunca se sube):
+You need JDK 17 and the Android SDK (or [Android Studio](https://developer.android.com/studio), which includes both). Open the folder with *File → Open* or use the terminal:
 
 ```
-storeFile=C:/ruta/a/autoskip-release.jks
+gradlew test            # unit tests for text detection
+gradlew assembleDebug   # test APK
+gradlew assembleRelease # signed APK (requires keystore.properties)
+```
+
+To sign the release version, create `keystore.properties` at the root (it's in `.gitignore`, never committed):
+
+```
+storeFile=C:/path/to/autoskip-release.jks
 storePassword=...
 keyAlias=autoskip
 keyPassword=...
 ```
 
-Todas las actualizaciones deben firmarse con **la misma clave**; si se pierde, los usuarios tendrán que desinstalar para instalar una versión nueva.
+All updates must be signed with **the same key**; if lost, users will need to uninstall to install a new version.
 
-## Cómo funciona
+## How it works
 
-| Archivo | Función |
+| File | Purpose |
 |---|---|
-| `AutoSkipService.kt` | Servicio en segundo plano. Solo recibe eventos de `com.google.android.youtube`, agrupa los eventos (como mucho un escaneo cada 250 ms) y espera 1,5 s de pausa tras cada clic. |
-| `SkipAdFinder.kt` | Busca el botón: primero por ID de vista (`skip_ad_button`, …; no depende del idioma) y después por texto o descripción que coincida exactamente con una frase de «saltar anuncio». |
-| `SkipAdMatcher.kt` | Frases de «saltar anuncio» en más de 30 idiomas. Normaliza el texto (mayúsculas, tildes, signos). |
-| `MainActivity.kt` | Estado (🟢 / 🔴 / ⚠️), interruptor Activar/Desactivar y contador. |
-| `PermissionActivity.kt` | Explicación del permiso y accesos directos a los ajustes. |
+| `AutoSkipService.kt` | Background service. Only receives events from `com.google.android.youtube`, batches events (at most one scan per 250ms) and waits 1.5s before the next tap. |
+| `SkipAdFinder.kt` | Finds the button: first by view ID (`skip_ad_button`, …; language independent) then by exact text match with "skip ad" phrases. |
+| `SkipAdMatcher.kt` | "Skip ad" phrases in 30+ languages. Normalizes text (case, accents, punctuation). |
+| `MainActivity.kt` | Status (🟢 / 🔴 / ⚠️), enable/disable toggle, and counter. |
+| `PermissionActivity.kt` | Permission explanation and settings shortcuts. |
 
-Medidas de seguridad para no tocar nada más:
-- Las palabras sueltas («Skip», «Saltar») no cuentan; solo frases completas o el ID del botón.
-- Etiquetas de más de 40 caracteres descartadas; el nodo debe ser visible y estar habilitado.
-- Si el elemento pulsable es mayor del 25 % de la pantalla (p. ej., el reproductor), **no** se pulsa.
-- Sin permiso `INTERNET`: la app no puede enviar datos.
+Safety measures to avoid tapping anything else:
+- Bare words ("Skip", "Saltar") don't count; only full phrases or view IDs.
+- Labels longer than 40 chars are ignored; node must be visible and enabled.
+- If a tappable element is larger than 25% of the screen (e.g., the player), it's never tapped.
+- No `INTERNET` permission: the app can't send data.
 
-Funciona igual en vertical y en horizontal (usa coordenadas absolutas y el área total de la pantalla).
+Works the same in portrait and landscape (uses absolute coordinates and total screen area).
 
-## Pruebas realizadas (26/09/2026, emulador Pixel 7, Android 15, YouTube 21.38.130)
+## Tests run (Sep 26, 2026, Pixel 7 emulator, Android 15, YouTube 21.38.130)
 
-| Prueba | Resultado |
+| Test | Result |
 |---|---|
-| Vertical, YouTube en inglés | ✅ 2 anuncios saltados |
-| Horizontal (pantalla completa), inglés | ✅ 2 anuncios saltados, el vídeo sigue reproduciéndose |
-| Vertical, YouTube en español | ✅ Saltado; botón «Saltar» / etiqueta «Saltar anuncio» |
-| Solo detección por texto (sin IDs) | ✅ Saltado a partir de «Saltar anuncio» |
-| Interruptor desactivado | ✅ 0 pulsaciones con el botón visible |
-| Anuncios no saltables y banners | ✅ No los toca |
-| Reinstalar o actualizar la app | ✅ El servicio sigue activo |
-| APK de publicación firmado (R8) | ✅ Salta igual que la versión de pruebas |
+| Portrait, YouTube English | ✅ 2 ads skipped |
+| Landscape (fullscreen), English | ✅ 2 ads skipped, video plays normally |
+| Portrait, YouTube Spanish | ✅ Skipped; "Saltar" / "Saltar anuncio" buttons |
+| Text detection only (no IDs) | ✅ Skipped using "skip ad" phrases |
+| Toggle disabled | ✅ 0 taps with button visible |
+| Unskippable ads and banners | ✅ Leaves them alone |
+| Reinstall/update | ✅ Service stays active |
+| Signed release APK (R8) | ✅ Works like test version |
 
-Todas las pulsaciones registradas fueron sobre `com.google.android.youtube:id/skip_ad_button` (logcat, etiqueta `AutoSkip`). Pendiente: probar en un móvil físico.
+All taps logged were on `com.google.android.youtube:id/skip_ad_button` (logcat tag `AutoSkip`). Todo: test on real device.
 
-## Mantenimiento
+## Maintenance
 
-YouTube cambia su interfaz con frecuencia. Si deja de funcionar, activa *Opciones de desarrollador → Mostrar límites de diseño* o usa *Layout Inspector* / `uiautomator dump` con un anuncio en pantalla para ver el nuevo ID o texto del botón y añádelo a `SKIP_VIEW_IDS` o `RAW_PHRASES` en `SkipAdMatcher.kt`.
+YouTube changes its UI frequently. If it stops working, enable *Developer options → Show layout bounds* or use *Layout Inspector* / `uiautomator dump` with an ad on screen to see the new button ID or text, then add it to `SKIP_VIEW_IDS` or `RAW_PHRASES` in `SkipAdMatcher.kt`.
 
-## Aviso sobre Google Play
+## Google Play notice
 
-La política de Google Play prohíbe las apps que bloquean o interfieren con los anuncios de otras apps, y revisa con lupa el uso de `AccessibilityService`. Saltar anuncios también puede incumplir los Términos de YouTube. Por eso AutoSkip se distribuye solo como APK en GitHub Releases, no en Play Store.
+Google Play policy prohibits apps that block or interfere with other apps' ads, and scrutinizes `AccessibilityService` use. Skipping ads may violate YouTube's Terms. That's why AutoSkip is distributed only as an APK on GitHub Releases, not on Play Store.
 
-## ¿Y iPhone?
+## iOS?
 
-No es posible en iOS. Apple no ofrece ninguna API equivalente a `AccessibilityService`: cada app vive aislada en su sandbox y no puede leer ni pulsar la interfaz de otra. Tampoco Atajos, Control por voz o Control por botón pueden automatizar esto desde una app de terceros, y App Store no aceptaría una app así. La única forma oficial de ver YouTube sin anuncios en iPhone es YouTube Premium.
+Not possible on iOS. Apple offers no API equivalent to `AccessibilityService`: each app lives in its own sandbox and can't read or tap another's UI. Shortcuts, Voice Control, or Switch Control can't automate this from third-party apps either, and the App Store won't allow it. The only official way to watch YouTube ad-free on iPhone is YouTube Premium.
 
-## ❤️ Apoya el proyecto
+## ❤️ Support the project
 
-AutoSkip es **gratuito, sin anuncios, de código abierto y sin ánimo de lucro**. Las donaciones en **[Ko-fi](https://ko-fi.com/abelgs716)** ayudan a mejorar la organización y a mantener el proyecto actualizado cuando YouTube cambia su interfaz.
+AutoSkip is **free, ad-free, open source and non-profit**. Donations on **[Ko-fi](https://ko-fi.com/abelgs716)** help us improve the organization and keep the project updated when YouTube changes its UI.
 
-También ayuda mucho darle una ⭐ al repositorio y compartirlo con otros usuarios.
+Giving the repository a ⭐ and sharing it with others also helps a lot.
 
-## Licencia
+## License
 
-[MIT](LICENSE). AutoSkip no está afiliado a YouTube ni a Google.
+[MIT](LICENSE). AutoSkip is not affiliated with YouTube or Google.
