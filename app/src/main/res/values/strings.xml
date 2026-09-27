@@ -17,8 +17,8 @@
     <string name="skipped_count">Anuncios saltados: %1$d</string>
     <string name="privacy_note">AutoSkip no tiene acceso a internet. No recopila, guarda ni envía ningún dato: solo busca el botón «Saltar anuncio» dentro de YouTube.</string>
 
-    <string name="button_support">☕ Apoya el proyecto</string>
-    <string name="support_note">AutoSkip es gratuito y de código abierto. Si te ahorra tiempo, puedes invitarme a un café.</string>
+    <string name="button_support">❤️ Apoya el proyecto</string>
+    <string name="support_note">AutoSkip es gratuito, de código abierto y sin ánimo de lucro. Las donaciones ayudan a mejorar la organización.</string>
     <string name="support_url" translatable="false">https://ko-fi.com/abelgs716</string>
 
     <!-- Pantalla de permisos -->

@@ -86,11 +86,11 @@ La política de Google Play prohíbe las apps que bloquean o interfieren con los
 
 No es posible en iOS. Apple no ofrece ninguna API equivalente a `AccessibilityService`: cada app vive aislada en su sandbox y no puede leer ni pulsar la interfaz de otra. Tampoco Atajos, Control por voz o Control por botón pueden automatizar esto desde una app de terceros, y App Store no aceptaría una app así. La única forma oficial de ver YouTube sin anuncios en iPhone es YouTube Premium.
 
-## ☕ Apoya el proyecto
+## ❤️ Apoya el proyecto
 
-AutoSkip es gratuito, sin anuncios y de código abierto. Si te ahorra tiempo, puedes invitarme a un café en **[Ko-fi](https://ko-fi.com/abelgs716)**. Las donaciones ayudan a mantenerlo al día cada vez que YouTube cambia su interfaz.
+AutoSkip es **gratuito, sin anuncios, de código abierto y sin ánimo de lucro**. Las donaciones en **[Ko-fi](https://ko-fi.com/abelgs716)** ayudan a mejorar la organización y a mantener el proyecto actualizado cuando YouTube cambia su interfaz.
 
-También ayuda mucho darle una ⭐ al repositorio y compartirlo.
+También ayuda mucho darle una ⭐ al repositorio y compartirlo con otros usuarios.
 
 ## Licencia
 
